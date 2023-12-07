@@ -8,13 +8,10 @@
                     <div class="card mb-4">
                         <a href="#!"><img class="card-img-top" src="https://dummyimage.com/850x350/dee2e6/6c757d.jpg" alt="..." /></a>
                         <div class="card-body">
-                            <p>dump: {{ data_dump }}</p>
-                            {% for post in post_list %}
-                            <div class="small text-muted">{{ post.created_on }}</div>
-                            <h2 class="card-title">{{ post.title }}</h2>
-                            <p class="card-text">{{ post.excerpt }}</p>
+                            <div class="small text-muted">{{ created_on }}</div>
+                            <h2 class="card-title">{{ title }}</h2>
+                            <p class="card-text">{{ excerpt }}</p>
                             <a class="btn btn-primary" href="#!">Read more →</a>
-                            {% endfor %}
                         </div>
                     </div>
                     <!-- Nested row for non-featured blog posts-->
