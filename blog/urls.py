@@ -1,6 +1,7 @@
 from . import views
 from django.urls import path
+from .views import post_summary
 
 urlpatterns = [
-    path("", views.PostList.as_view(), name="home"),
+    path("", post_summary, name="home"),
 ]
