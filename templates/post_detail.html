@@ -42,9 +42,8 @@
                         <div class="card bg-light">
                             <div class="card-body">
                                 <!-- Comment form-->
-                                <form method="POST" class="mb-4">
+                                <form class="mb-4">
                                     {{ comment_form | crispy }}
-                                    {% csrf_token %}
                                     <textarea class="form-control" rows="3" placeholder="Join the discussion and leave a comment!"></textarea>
                                 </form>
                                 <!-- Single comment-->
