@@ -12,6 +12,13 @@ class PostList(generic.ListView):
     paginate_by = 6
 
 
+class SessionList(generic.ListView):
+    model = Session
+    queryset = Post.objects.order_by("-created_on")
+    context_object_name = 'session'
+    template_name = "session_detail.html"
+
+
 class PostDetail(View):
 
     def get(self, request, slug, *args, **kwargs):
@@ -76,9 +83,3 @@ class PostLike(View):
             post.likes.add(request.user)
 
         return HttpResponseRedirect(reverse('post_detail', args=[slug]))
-
-
-class SessionList(generic.ListView):
-    model = Session
-    queryset = Post.objects.order_by("-created_on")
-    template_name = "post_session.html"

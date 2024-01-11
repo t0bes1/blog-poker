@@ -1,10 +1,12 @@
 {% extends "base.html" %}
 {% block content %}
+<p>{{ session_list }}</p>
+<p>{{ object_list }}</p>
 <table class="table">
     <thead class="thead-dark">
       <tr>
         <th scope="col">#</th>
-        <th scope="col">Ref</th>
+        <th scope="col">{{ session.name }}</th>
         <th scope="col">Venue</th>
         <th scope="col">Length</th>
         <th scope="col">P&L</th>
@@ -19,4 +21,5 @@
         <td>{{ session.profit_loss }}</td>
   </tr>
 </table>
+{% endfor %}
 {% endblock %}
