@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Post, Comment
+from .models import Post, Comment, Session
 from django_summernote.admin import SummernoteModelAdmin
 
 
@@ -22,3 +22,8 @@ class CommentAdmin(admin.ModelAdmin):
 
     def approve_comments(self, request, queryset):
         queryset.update(approved=True)
+
+@admin.register(Session)
+class SessionAdmin(admin.ModelAdmin):
+    list_display = ('name', 'created_on')
+    list_filter = ('venue','created_on')

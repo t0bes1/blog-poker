@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+{% block content %}
+<table class="table">
+    <thead class="thead-dark">
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Ref</th>
+        <th scope="col">Venue</th>
+        <th scope="col">Length</th>
+        <th scope="col">P&L</th>
+      </tr>
+    </thead>
+{% for session in session_list %}
+    <tr>
+        <th scope="row">1</th>
+        <td>{{ session.name }}</td>
+        <td>{{ session.venue }}</td>
+        <td>{{ session.length }}</td>
+        <td>{{ session.profit_loss }}</td>
+  </tr>
+</table>
+{% endblock %}
