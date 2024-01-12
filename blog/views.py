@@ -14,8 +14,7 @@ class PostList(generic.ListView):
 
 class SessionList(generic.ListView):
     model = Session
-    queryset = Post.objects.order_by("-created_on")
-    context_object_name = 'session'
+    queryset = Session.objects.order_by("-created_on")
     template_name = "session_detail.html"
 
 
