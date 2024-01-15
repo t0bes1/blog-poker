@@ -20,13 +20,13 @@ class SessionList(generic.ListView):
 
 class CategoryTag(View):
 
-    def category_tag(request, slug):
+    def category_tag(request, tag):
         queryset = Post.objects.filter(status=1)
-        post = get_object_or_404(queryset, tag=tag)
+        tag_list = get_object_or_404(queryset, tag=tag)
         return render(
             request,
             "blog/category_tag.html",
-            {"post": post},
+            {"post": tag_list},
   )
 
 
