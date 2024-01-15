@@ -18,6 +18,18 @@ class SessionList(generic.ListView):
     template_name = "session_detail.html"
 
 
+class CategoryTag(View):
+
+    def category_tag(request, slug):
+        queryset = Post.objects.filter(status=1)
+        post = get_object_or_404(queryset, tag=tag)
+        return render(
+            request,
+            "blog/category_tag.html",
+            {"post": post},
+  )
+
+
 class PostDetail(View):
 
     def get(self, request, slug, *args, **kwargs):
