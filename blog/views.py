@@ -12,22 +12,27 @@ class PostList(generic.ListView):
     paginate_by = 6
 
 
-class SessionList(generic.ListView):
-    model = Session
-    queryset = Session.objects.order_by("-created_on")
-    template_name = "session_detail.html"
+class SpotList(generic.ListView):
+    model = Post
+    queryset = Post.objects.filter(tag="PR").order_by("-created_on")
+    template_name = "category_tag.html"
+    paginate_by = 6
 
 
-class CategoryTag(View):
+class SessionList(View):
 
-    def category_tag(request, tag):
-        queryset = Post.objects.filter(status=1)
-        tag_list = get_object_or_404(queryset, tag=tag)
+    def get(request, *args):
+        model = Session
+        queryset = Session.objects.order_by("-created_on")
+        sessions = list(queryset)
+        template_name = "session_detail.html"
         return render(
             request,
-            "blog/category_tag.html",
-            {"post": tag_list},
-  )
+            template_name,
+            context = {
+                "session_list": sessions
+                }
+        )
 
 
 class PostDetail(View):

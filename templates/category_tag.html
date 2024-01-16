@@ -1,5 +1,6 @@
 {% extends "base.html" %}
 {% block content %}
+
 <!-- Page header with logo and tagline-->
 <header class="py-5 bg-light border-bottom mb-4">
     <div class="container">
@@ -14,19 +15,19 @@
                 <!-- Blog entries-->
                 <div class="col-lg-8">
                     <!-- Blog post-->
-                    {% for tag in tag_list %}
+                    {% for spot in post_list %}
                     <div class="card mb-4">
-                        {% if "placeholder" in tag.featured_image.url %}
+                        {% if "placeholder" in spot.featured_image.url %}
                                 <img class="card-img-top"
                                     src="../media/poker-image.jpg">
                                 {% else %}
-                                <img class="card-img-top" src="{{ post.featured_image.url }}">
+                                <img class="card-img-top" src="{{ spot.featured_image.url }}">
                                 {% endif %}
                         <div class="card-body">
-                            <div class="small text-muted">{{ tag.created_on }}</div>
-                            <h2 class="card-title">{{ tag.title }}</h2>
-                            <p class="card-text">{{ tag.excerpt }}</p>
-                            <a class="btn btn-primary" href="{% url 'post_detail' post.slug  %}" class = "post-link">Read more →</a>
+                            <div class="small text-muted">{{ spot.created_on }}</div>
+                            <h2 class="card-title">{{ spot.title }}</h2>
+                            <p class="card-text">{{ spot.excerpt }}</p>
+                            <a class="btn btn-primary" href="{% url 'post_detail' spot.slug  %}" class = "post-link">Read more →</a>
                         </div>
                     </div>
                     {% endfor %}
