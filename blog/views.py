@@ -2,7 +2,7 @@ from django.shortcuts import render, get_object_or_404, reverse
 from django.views import generic, View
 from django.http import HttpResponseRedirect
 from .models import Post, Session
-from .forms import CommentForm
+from .forms import CommentForm, SessionForm
 
 
 class PostList(generic.ListView):
@@ -15,16 +15,13 @@ class PostList(generic.ListView):
 def session_list(request):
     context ={}
     context["sessions"] = Session.objects.all()
+    context["session_form"] = SessionForm()
          
     return render(request, "session_detail.html", context)
 
 
 def spot_list(request, tag):
-    # dictionary for initial data with 
-    # field names as keys
     context ={}
- 
-    # add the dictionary Sessionduring initialization
     context["spot_list"] = Post.objects.all().filter(tag = tag)
          
     return render(request, "category_tag.html", context)
