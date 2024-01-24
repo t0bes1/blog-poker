@@ -12,27 +12,22 @@ class PostList(generic.ListView):
     paginate_by = 6
 
 
-class SpotList(generic.ListView):
-    model = Post
-    queryset = Post.objects.filter(tag="PR").order_by("-created_on")
-    template_name = "category_tag.html"
-    paginate_by = 6
+def session_list(request):
+    context ={}
+    context["sessions"] = Session.objects.all()
+         
+    return render(request, "session_detail.html", context)
 
 
-class SessionList(View):
-
-    def get(request, *args):
-        model = Session
-        queryset = Session.objects.order_by("-created_on")
-        sessions = list(queryset)
-        template_name = "session_detail.html"
-        return render(
-            request,
-            template_name,
-            context = {
-                "session_list": sessions
-                }
-        )
+def spot_list(request, tag):
+    # dictionary for initial data with 
+    # field names as keys
+    context ={}
+ 
+    # add the dictionary Sessionduring initialization
+    context["spot_list"] = Post.objects.all().filter(tag = tag)
+         
+    return render(request, "category_tag.html", context)
 
 
 class PostDetail(View):
