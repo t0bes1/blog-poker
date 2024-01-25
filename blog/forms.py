@@ -11,4 +11,4 @@ class CommentForm(forms.ModelForm):
 class SessionForm(forms.ModelForm):
     class Meta:
         model = Session
-        fields = ('name',)
+        fields = ('author', 'name', 'venue', 'length', 'profit_loss', 'notes',)

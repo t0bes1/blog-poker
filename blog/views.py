@@ -12,19 +12,38 @@ class PostList(generic.ListView):
     paginate_by = 6
 
 
-def session_list(request):
-    context ={}
-    context["sessions"] = Session.objects.all()
-    context["session_form"] = SessionForm()
-         
-    return render(request, "session_detail.html", context)
-
-
-def spot_list(request, tag):
+def CategoryTag(request, tag):
     context ={}
     context["spot_list"] = Post.objects.all().filter(tag = tag)
+    context["tag"] = tag
          
     return render(request, "category_tag.html", context)
+
+
+class SessionDetail(View):
+
+    def get(self, request):
+        context ={}
+        context["sessions"] = Session.objects.order_by("-created_on").all()
+        context["session_form"] = SessionForm()
+        context["session_added"] = False
+         
+        return render(request, "session_detail.html", context)
+
+    def post(self, request, *args, **kwargs):
+        context ={}
+        context["sessions"] = Session.objects.order_by("-created_on").all()
+        context["session_form"] = SessionForm()
+        context["session_added"] = True
+
+        session_form = SessionForm(data=request.POST)
+        if session_form.is_valid():
+            session = session_form.save(commit=False)
+            session.save()
+        else:
+            session_form = SessionForm()
+         
+        return render(request, "session_detail.html", context)
 
 
 class PostDetail(View):

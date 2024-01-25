@@ -13,7 +13,7 @@
   <thead class="thead-dark">
     <tr>
       <th scope="col">Session Date</th>
-      <th scope="col">Session</th>
+      <th scope="col">Name</th>
       <th scope="col">Venue</th>
       <th scope="col">Length</th>
       <th scope="col">P&L</th>
@@ -31,17 +31,17 @@
   </tr>
 {% endfor %}
 </table>
-<!-- Comments section-->
+<!-- Session input section-->
 <section class="mb-5">
   <div class="card bg-light">
       <div class="card-body">
           <!-- Session form-->
-          {% if commented %}
-          <div class="alert alert-success" role="alert">Your comment is awaiting approval</div>
+          {% if session_added %}
+          <div class="alert alert-success" role="alert">Your session has been added</div>
           {% else %}
           {% if user.is_authenticated %}
-          <h4>Leave a comment:</h4>
-          <p>Posting as: {{ user.username }}</p>
+          <h4>Input a new session:</h4>
+          <p>Input from: {{ user.username }}</p>
           <form method="post" class="mb-4">
               {{ session_form | crispy }}
               {% csrf_token %}
