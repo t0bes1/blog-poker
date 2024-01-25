@@ -10,13 +10,14 @@
                         <header class="mb-4">
                             <!-- Post title-->
                             <h1 class="fw-bolder mb-1">{{ post.title }}</h1>
+                            <h2 class="card-text">{{ post.excerpt }}</h2>
                             <!-- Post meta content-->
                             <div class="text-muted fst-italic mb-2">{{ post.created_on }} {{ post.author }}</div>
                             <!-- Post categories-->
                             <a class="badge bg-secondary text-decoration-none link-light" href="{% url 'cat_tag' tag=post.tag %}">{{ post.tag }}</a>
                         </header>
                         <!-- Preview image figure-->
-                        <figure class="mb-4"><img class="img-fluid rounded" src="https://dummyimage.com/900x400/ced4da/6c757d.jpg" alt="..." /></figure>
+                        <figure class="mb-4"><img class="img-fluid rounded" src="{{ post.featured_image.url }}" alt="..." /></figure>
                         <!-- Post content-->
                         <section class="mb-5">
                             <p class="fs-5 mb-4">{{ post.content | safe }}</p>
