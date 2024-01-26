@@ -10,6 +10,7 @@
     </div>
   </div>
 </header>
+<div class="container">
 <table class="table table-striped table-responsive">
   <thead class="thead-dark">
     <tr>
@@ -32,8 +33,10 @@
   </tr>
 {% endfor %}
 </table>
+</div>
 <!-- Session input section-->
 <section class="mb-5">
+<div class="container">
   <div class="card bg-light">
       <div class="card-body">
           <!-- Session form-->
@@ -42,7 +45,7 @@
           {% else %}
           {% if user.is_authenticated %}
           <h4>Input a new session:</h4>
-          <p>Input from: {{ user.username }}</p>
+          <p>Input by: {{ user.username }}</p>
           <form method="post" class="mb-4">
               {{ session_form | crispy }}
               {% csrf_token %}
@@ -52,6 +55,7 @@
           {% endif %}
       </div>
   </div>
+</div>
 </section>
 
 {% endblock %}
