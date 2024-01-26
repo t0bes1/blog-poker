@@ -18,7 +18,7 @@
                     <div class="card mb-4">
                         {% if "placeholder" in post.featured_image.url %}
                                 <img class="card-img-top"
-                                    src="../media/poker-image.jpg">
+                                    src="../media/poker-image.jpg" alt="image showing a few poker cards">
                                 {% else %}
                                 <img class="card-img-top" src="{{ post.featured_image.url }}">
                                 {% endif %}
@@ -30,19 +30,6 @@
                         </div>
                     </div>
                     {% endfor %}
-                    <!-- Pagination-->
-                    <nav aria-label="Pagination">
-                        <hr class="my-0" />
-                        <ul class="pagination justify-content-center my-4">
-                            <li class="page-item disabled"><a class="page-link" href="#" tabindex="-1" aria-disabled="true">Newer</a></li>
-                            <li class="page-item active" aria-current="page"><a class="page-link" href="#!">1</a></li>
-                            <li class="page-item"><a class="page-link" href="#!">2</a></li>
-                            <li class="page-item"><a class="page-link" href="#!">3</a></li>
-                            <li class="page-item disabled"><a class="page-link" href="#!">...</a></li>
-                            <li class="page-item"><a class="page-link" href="#!">15</a></li>
-                            <li class="page-item"><a class="page-link" href="#!">Older</a></li>
-                        </ul>
-                    </nav>
                 </div>
                 <!-- Side widgets-->
                 <div class="col-lg-4">
@@ -62,11 +49,10 @@
                         </div>
                     </div>
                     <!-- Side widget-->
-                    <div class="p-3 mb-2 bg-warning text-dark">
-                        <button type="button" class="btn btn-primary">
-                            Sessions <span class="badge bg-secondary">4</span>
-                        <div class="card-body"><a href="{% url 'session_detail' %}" style="text-decoration:none">See all my results</a></div>
-                        </button>
+                    <div class="p-3 mb-2 bg-dark text-white">
+                        <div class="card-body">
+                            <a href="{% url 'session_detail' %}" class="btn btn-primary">SESSION RESULTS</a>
+                        </div>
                     </div>
                 </div>
             </div>
