@@ -1,7 +1,7 @@
 {% extends "base.html" %}
 {% block content %}
 <!-- Page header with logo and tagline-->
-<header class="py-5 bg-light border-bottom mb-4">
+<header class="py-3 bg-light border-bottom mb-4">
     <div class="container">
         <div class="text-center my-5">
             <h1 class="fw-bolder">Welcome to my Poker Blog!</h1>
@@ -46,16 +46,6 @@
                 </div>
                 <!-- Side widgets-->
                 <div class="col-lg-4">
-                    <!-- Search widget-->
-                    <div class="card mb-4">
-                        <div class="card-header">Search</div>
-                        <div class="card-body">
-                            <div class="input-group">
-                                <input class="form-control" type="text" placeholder="Enter search term..." aria-label="Enter search term..." aria-describedby="button-search" />
-                                <button class="btn btn-primary" id="button-search" type="button">Go!</button>
-                            </div>
-                        </div>
-                    </div>
                     <!-- Categories widget-->
                     <div class="card mb-4">
                         <div class="card-header">Categories</div>
@@ -72,9 +62,11 @@
                         </div>
                     </div>
                     <!-- Side widget-->
-                    <div class="card mb-4">
-                        <div class="card-header">Sessions</div>
-                        <div class="card-body"><a href="{% url 'session_detail' %}">Click here for a list of all sessions</a></div>
+                    <div class="p-3 mb-2 bg-warning text-dark">
+                        <button type="button" class="btn btn-primary">
+                            Sessions <span class="badge bg-secondary">4</span>
+                        <div class="card-body"><a href="{% url 'session_detail' %}" style="text-decoration:none">See all my results</a></div>
+                        </button>
                     </div>
                 </div>
             </div>

@@ -5,7 +5,16 @@
 <header class="py-2 bg-light border-bottom mb-4">
     <div class="container">
         <div class="text-left my-5">
-            <h1 class="fw-bolder">{{ tag }} blogs:</h1>
+            {% if "PR" in tag %}
+            <h1 class="fw-bolder">Progress blogs:</h1>
+            <p class="lead mb-0">Find out about my thoughts on how my journey is progressing</p>
+            {% elif "SE" in tag %}
+            <h1 class="fw-bolder">Session blogs:</h1>
+            <p class="lead mb-0">Trip reports on my poker sessions, successful or otherwise!</p>
+            {% elif "SP" in tag %}
+            <h1 class="fw-bolder">Spot blogs:</h1>
+            <p class="lead mb-0">Thoughts and learnings on interesting or important spots at the table</p>
+            {% endif %}
         </div>
     </div>
 </header>
