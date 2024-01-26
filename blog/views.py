@@ -6,6 +6,9 @@ from .forms import CommentForm, SessionForm
 
 
 class PostList(generic.ListView):
+    """
+    Genenric post list for home page, most recent first
+    """
     model = Post
     queryset = Post.objects.filter(status=1).order_by("-created_on")
     template_name = "index.html"
@@ -13,6 +16,9 @@ class PostList(generic.ListView):
 
 
 def CategoryTag(request, tag):
+    """
+    Creates bespoke list for blog posts using a certain category tag
+    """
     context ={}
     context["spot_list"] = Post.objects.all().filter(tag = tag)
     context["tag"] = tag
@@ -21,7 +27,10 @@ def CategoryTag(request, tag):
 
 
 class SessionDetail(View):
-
+    """
+    Builds view of all session results for display in a table
+    Includes form for capturing a new session
+    """
     def get(self, request):
         context ={}
         context["sessions"] = Session.objects.order_by("-created_on").all()
@@ -47,6 +56,10 @@ class SessionDetail(View):
 
 
 class PostDetail(View):
+    """
+    Builds view of specific blog posts for display
+    Include comment functionality
+    """
 
     def get(self, request, slug, *args, **kwargs):
         queryset = Post.objects.filter(status=1)
@@ -101,7 +114,9 @@ class PostDetail(View):
 
 
 class PostLike(View):
-    
+    """
+    Builds liked post view
+    """
     def post(self, request, slug, *args, **kwargs):
         post = get_object_or_404(Post, slug=slug)
         if post.likes.filter(id=request.user.id).exists():
