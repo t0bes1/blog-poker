@@ -20,13 +20,13 @@
                                 <img class="card-img-top"
                                     src="../media/Dealer_button_chip_&_playing_cards.JPG" alt="image showing a few poker cards">
                                 {% else %}
-                                <img class="card-img-top" src="{{ post.featured_image.url }}">
+                                <img class="card-img-top" src="{{ post.featured_image.url }}" alt="blog picture showing poker">
                                 {% endif %}
                         <div class="card-body">
                             <div class="small text-muted">{{ post.created_on }}</div>
                             <h2 class="card-title">{{ post.title }}</h2>
                             <p class="card-text">{{ post.excerpt }}</p>
-                            <a class="btn btn-primary" href="{% url 'post_detail' post.slug  %}" class = "post-link">Read more →</a>
+                            <a class="btn btn-primary" href="{% url 'post_detail' post.slug  %}">Read more →</a>
                         </div>
                     </div>
                     {% endfor %}
